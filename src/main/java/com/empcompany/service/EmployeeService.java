@@ -13,5 +13,5 @@ public interface EmployeeService
 	public void addEmployee(Employee employee);
 	public void deleteEmployee(int employeeid);
 	public List<Employee> displayEmployees();
-	public void updateEmployee(Employee employee);
+//	public void updateEmployee(Employee employee);
 }

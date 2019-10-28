@@ -11,6 +11,6 @@ public interface DepartmentService
 {
 	public void addDepartment(Department department);
 	public void deleteEmployee(int departmentid);
-	public List<List<Department>>  displayDepartment();
+	public List<Department>  displayDepartment();
 	public void updateDepartment(Department department);
 }

@@ -13,34 +13,23 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.empcompany.model.Department;
 import com.empcompany.model.Organization;
-import com.empcompany.service.OrganizationService;
+import com.empcompany.service.DepartmentService;
 
 @RestController
 @RequestMapping("organization")
-public class OrganizationController
+public class OrganizationController 
 {
 	@Autowired
-	OrganizationService organizationService;
+	Organization organization;
 	
-	@PostMapping("/add")
-	public ResponseEntity<Void> m1(@RequestBody Organization organization)
-	{
-		organizationService.addOrganization(organization);
-		return new ResponseEntity<Void>(HttpStatus.CREATED);
-	}
 	
 	@GetMapping("/show")
-	public ResponseEntity<List<Organization>> getOrganizationDetails() 
+	public ResponseEntity<Organization>  getOrganizationDetails() 
 	{
-		return new ResponseEntity<List<Organization>>(organizationService.displayOrganization(),HttpStatus.OK);
+		return new ResponseEntity<Organization>(organization,HttpStatus.OK);
 	}
 	
-	@DeleteMapping("/delete")
-	public ResponseEntity<Void> deleteOrganizationDetails(@PathVariable("id") int organizationid) 
-	{
-		organizationService.deleteOrganization(organizationid);
-		return new ResponseEntity<Void>(HttpStatus.OK);		
-	}
-	
+
 }

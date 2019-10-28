@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class Organization 
 {
-	private int organizationId;
-	private String organizationName;
+	private int organizationId=1;
+	private String organizationName="Google";
 	
 	private List<Department> departments=new ArrayList<Department>();
 	

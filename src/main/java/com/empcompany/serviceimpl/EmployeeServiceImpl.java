@@ -17,47 +17,63 @@ import com.empcompany.service.EmployeeService;
 public class EmployeeServiceImpl implements EmployeeService
 {
 	@Autowired
-	Department department;
+	Organization organization;
 	
 	@Override
 	public void addEmployee(Employee employee) 
 	{
-		Employee emp=EmployeeFactory.getEmployee(employee.getDepartment().getDepartmentName()).builder();
-		emp.setId(department.getEmployees().isEmpty()?1:(department.getEmployees().get(department.getEmployees().size()-1).getId())+1);
-		emp.setMobile(employee.getMobile()).setName(employee.getName()).setDepartment(employee.getDepartment());
-		department.getEmployees().add(emp);
+		for(Department department:organization.getDepartments())
+		{
+			if(department.getDepartmentName().equals(employee.getDepartment().getDepartmentName()))
+			{
+				Employee emp=EmployeeFactory.getEmployee(employee.getDepartment().getDepartmentName()).builder();
+				emp.setId(department.getEmployees().isEmpty()?1:(department.getEmployees().get(department.getEmployees().size()-1).getId())+1);
+				emp.setMobile(employee.getMobile()).setName(employee.getName()).setDepartment(employee.getDepartment());
+				department.getEmployees().add(emp);
+			}
+		}
 	}
 
 	@Override
 	public void deleteEmployee(int employeeid) 
 	{
-		for(Employee emp:department.getEmployees())
+		int i=0;
+		for(Department department:organization.getDepartments())
 		{
-			if(emp.getId()==employeeid)
+			for(Employee emp:department.getEmployees())
 			{
-				department.getEmployees().remove(emp);		
+				if(emp.getId()==employeeid)
+				{
+					organization.getDepartments().get(0).getEmployees().remove(emp);		
+				}
 			}
+			i++;
 		}
 	}
 
 	@Override
 	public List<Employee> displayEmployees() 
 	{
-		return department.getEmployees();
+		List<Employee> employees=new ArrayList<Employee>();
+		for(Department dept:organization.getDepartments())
+		{
+			employees.addAll(dept.getEmployees());
+		}
+		return employees;
 	}
 
-	@Override
-	public void updateEmployee(Employee employee)
-	{
-		int i=0;
-		for(Employee emp:department.getEmployees())
-		{
-			if(emp.getId() ==employee.getId())
-			{
-				department.getEmployees().add(i,emp);
-			}
-			i++;
-		}	
-	}
+//	@Override
+//	public void updateEmployee(Employee employee)
+//	{
+//		int i=0;
+//		for(Employee emp:department.getEmployees())
+//		{
+//			if(emp.getId() ==employee.getId())
+//			{
+//				department.getEmployees().add(i,emp);
+//			}
+//			i++;
+//		}	
+//	}
 
 }
