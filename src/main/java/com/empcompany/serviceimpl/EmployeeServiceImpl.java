@@ -35,19 +35,22 @@ public class EmployeeServiceImpl implements EmployeeService
 	}
 
 	@Override
-	public void deleteEmployee(int employeeid) 
+	public void deleteEmployee(Employee employee) 
 	{
 		int i=0;
 		for(Department department:organization.getDepartments())
 		{
+			if(employee.getDepartment().getDepartmentName().equals(department.getDepartmentName()))
+			{
 			for(Employee emp:department.getEmployees())
 			{
-				if(emp.getId()==employeeid)
+				if(emp.getId()==employee.getId())
 				{
-					organization.getDepartments().get(0).getEmployees().remove(emp);		
+					organization.getDepartments().get(i).getEmployees().remove(emp);		
 				}
 			}
 			i++;
+		}
 		}
 	}
 

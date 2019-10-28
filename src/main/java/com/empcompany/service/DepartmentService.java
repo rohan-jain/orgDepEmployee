@@ -10,7 +10,7 @@ import com.empcompany.model.Department;
 public interface DepartmentService 
 {
 	public void addDepartment(Department department);
-	public void deleteEmployee(int departmentid);
+	public void deleteDepartment(int departmentid);
 	public List<Department>  displayDepartment();
 	public void updateDepartment(Department department);
 }

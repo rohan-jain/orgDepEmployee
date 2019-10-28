@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-
 @Component
 public class Organization 
 {
@@ -31,7 +30,5 @@ public class Organization
 	}
 	public void setOrganizationName(String organizationName) {
 		this.organizationName = organizationName;
-	}
-	
-	
+	}	
 }

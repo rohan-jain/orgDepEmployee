@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.empcompany.model.Department;
@@ -38,10 +39,10 @@ public class DepartmentController
 		return new ResponseEntity<List<Department>>(departmentService.displayDepartment(),HttpStatus.OK);
 	}
 	
-	@DeleteMapping("/delete")
-	public ResponseEntity<Void> deleteDetails(@PathVariable("id") int departmentid) 
+	@DeleteMapping("/delete/{departmentId}")
+	public ResponseEntity<Void> deleteDetails(@PathVariable("departmentId") int departmentId) 
 	{
-		departmentService.deleteEmployee(departmentid);
+		departmentService.deleteDepartment(departmentId);
 		return new ResponseEntity<Void>(HttpStatus.OK);		
 	}
 }

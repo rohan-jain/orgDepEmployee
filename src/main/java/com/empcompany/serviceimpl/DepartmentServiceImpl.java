@@ -23,7 +23,7 @@ public class DepartmentServiceImpl implements DepartmentService
 	}
 
 	@Override
-	public void deleteEmployee(int departmentid) 
+	public void deleteDepartment(int departmentid) 
 	{
 		for(Department dept:organization.getDepartments())
 		{
