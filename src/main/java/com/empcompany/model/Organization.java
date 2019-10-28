@@ -9,10 +9,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class Organization 
 {
-	int organizationId;
-	String organizationName;
+	private int organizationId;
+	private String organizationName;
 	
-	List<Department> departments=new ArrayList<Department>();
+	private List<Department> departments=new ArrayList<Department>();
 	
 	public List<Department> getDepartments() {
 		return departments;

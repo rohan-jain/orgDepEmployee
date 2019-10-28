@@ -1,5 +1,6 @@
 package com.empcompany.serviceimpl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -11,7 +12,7 @@ import com.empcompany.service.OrganizationService;
 @Service
 public  class OrganizationServiceImpl implements OrganizationService 
 {
-	List<Organization> organizations;
+	List<Organization> organizations=new ArrayList<Organization>();
 	
 	@Override
 	public void addOrganization(Organization organization)
