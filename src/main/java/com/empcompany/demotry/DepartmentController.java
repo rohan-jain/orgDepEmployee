@@ -33,9 +33,9 @@ public class DepartmentController
 	}
 	
 	@GetMapping("/show")
-	public ResponseEntity<List<Department>> getDepartmentDetails() 
+	public ResponseEntity<List<List<Department>>>  getDepartmentDetails() 
 	{
-		return new ResponseEntity<List<Department>>(departmentService.displayDepartment(),HttpStatus.OK);
+		return new ResponseEntity<List<List<Department>>>(departmentService.displayDepartment(),HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/delete")
